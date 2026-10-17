@@ -1,0 +1,40 @@
+<div class="container">
+
+    <div class="container text-center" style="margin: 30px">
+        <h3>Editar Producto</h3>
+    </div>
+    <div class="text-danger text-center mb-2">
+        @if (mensaje) {
+            {{mensaje}}
+        }
+    </div>
+    <form (ngSubmit)="onSubmit()" #formularioValido="ngForm">
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción del Producto</label>
+            <input type="text" class="form-control" id="descripcion" name="descripcion" required="true"
+                [(ngModel)]="producto.nombre" required>
+        </div>
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="number" step="any" class="form-control" id="precio" name="precio" [(ngModel)]="producto.precio"
+                required min="0.01" #precioControl="ngModel">
+            @if (precioControl.invalid && precioControl.touched) {
+            <small class="text-danger">
+                @if (precioControl.hasError('required')) {
+                El precio es obligatorio.
+                }
+                @else if (precioControl.hasError('min')) {
+                El precio debe ser mayor a 0.
+                }
+                @else {Valor inválido.}
+            </small>
+            }
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-warning btn-sm me-3"
+                [disabled]="formularioValido.invalid">Guardar</button>
+            <a href="/" class="btn btn-danger btn-sm">Regresar</a>
+        </div>
+    </form>
+
+</div>

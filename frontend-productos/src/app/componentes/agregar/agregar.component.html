@@ -1,0 +1,53 @@
+<section class="container mt-4 d-flex flex-column align-items-center justify-content-center">
+    <div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-whatever="@fat">
+            <i class="bi bi-plus-circle me-1"></i>Agregar Producto
+        </button>
+    </div>
+</section>
+
+<section>
+    <!-- Modal producto -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        Nuevo Producto
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        (click)="cerrarModal()"></button>
+                </div>
+                <div class="modal-body">
+                    <form #productoForm="ngForm" (ngSubmit)="agregarProducto(productoForm)">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input type="text" minlength="2" required name="nombre" id="nombre" class="form-control"
+                                autocomplete="off" [(ngModel)]="nuevoProducto.nombre" #nombre="ngModel" />
+                            @if (nombre.invalid && nombre.touched) {
+                            <div class="text-danger">
+                                El nombre es querido y debe tener al menos 2 caracteres.
+                            </div>
+                            }
+                        </div>
+                        <div class="mb-3">
+                            <label for="precio" class="form-label">precio:</label>
+                            <input type="number" name="precio" id="precio" class="form-control" autocomplete="off"
+                                [(ngModel)]="nuevoProducto.precio" />
+                        </div>
+                        <div class="modal-footer">
+                            <button [routerLink]="['']" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Cerrar
+                            </button>
+                            <button type="submit" data-bs-dismiss="modal" class="btn btn-primary" [routerLink]="['']"
+                                [disabled]="productoForm.invalid">
+                                Agregar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

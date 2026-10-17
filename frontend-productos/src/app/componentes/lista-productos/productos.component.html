@@ -1,0 +1,35 @@
+<app-agregar (notificarPadre)="listarProductos()"></app-agregar>
+
+<!-- Tabla de productos -->
+<div class="card border-0 shadow-sm w-50 mx-auto mt-4">
+  <div class="card-body p-0">
+    <h2 class="text-center text-info">Listado de Productos</h2>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover align-middle mb-0 text-center">
+      <thead>
+        <tr>
+          <th class="px-0 py-3">#</th>
+          <th class="py-4">Nombre</th>
+          <th class="py-4">Precio</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (producto of productosListar; track producto.id) {
+        <tr>
+          <td>{{ producto.id }}</td>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.precio | currency: "GTQ":'symbol-narrow': '1.2-2'}}</td>
+          <td>
+            <div>
+              <a [routerLink]="['/editarProducto', producto.id]" class="btn btn-warning btn-sm me-2">Editar</a>
+              <button class="btn btn-danger btn-sm" (click)="eliminar(producto.id)">Eliminar</button>
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
