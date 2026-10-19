@@ -33,7 +33,7 @@ export class ProductosComponent {
     });
   }
 
-  eliminar(id: number) {
+  eliminar(id: any) {
     this.productoService.eliminarProducto(id).subscribe({
       next: (datos) => this.listarProductos(),
       error: (errores) => console.log(errores),
