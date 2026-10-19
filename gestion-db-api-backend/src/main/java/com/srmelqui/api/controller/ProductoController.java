@@ -6,6 +6,8 @@ import com.srmelqui.api.service.ProductoService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,17 +26,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api") // Define la URL base para este recurso.
 public class ProductoController {
 
+    private static final Logger logger
+            = LoggerFactory.getLogger(ProductoController.class);
+    
     @Autowired // Inyección de dependencia
     private ProductoService productoService;
 
     // http://localhost:8080/api/productos
     @GetMapping("/productos") // Difine este método responde a peticiones de lectura
     public List<Producto> listarTodos() {
-        return this.productoService.listarProductos();
+        List<Producto> productos =  this.productoService.listarProductos();
+        logger.info("Listando Productos");
+         productos.forEach((producto -> logger.info(producto.toString())));
+        return productos;
     }
 
     // @RequestBody: Toma el JSON que envías desde el cliente y lo convierte automáticamente en un objeto Java.
-    @PostMapping("/productos")
+    @PostMapping("/producto")
     public Producto guardar(@RequestBody Producto nuevo) {
         return this.productoService.guardarProducto(nuevo);
     }
