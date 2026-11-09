@@ -1,5 +1,5 @@
 
-package com.srmelqui.api.model;
+package com.srmelqui.api.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

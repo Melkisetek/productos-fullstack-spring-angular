@@ -1,6 +1,6 @@
 package com.srmelqui.api.service;
 
-import com.srmelqui.api.model.Producto;
+import com.srmelqui.api.entity.Producto;
 import com.srmelqui.api.repository.ProductoRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

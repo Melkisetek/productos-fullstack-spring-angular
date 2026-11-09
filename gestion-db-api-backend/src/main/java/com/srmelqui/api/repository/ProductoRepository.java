@@ -1,7 +1,7 @@
 package com.srmelqui.api.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.srmelqui.api.model.Producto;
+import com.srmelqui.api.entity.Producto;
 import org.springframework.stereotype.Repository;
 // Capa DAO
 @Repository

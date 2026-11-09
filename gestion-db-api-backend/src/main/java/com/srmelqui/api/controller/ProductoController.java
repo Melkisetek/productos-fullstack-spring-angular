@@ -1,7 +1,7 @@
 package com.srmelqui.api.controller;
 
 import com.srmelqui.api.exception.RecursoNoEncontradoException;
-import com.srmelqui.api.model.Producto;
+import com.srmelqui.api.entity.Producto;
 import com.srmelqui.api.service.ProductoService;
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "*") // Permite que cualquier aplicación externa consuma esta API
+@CrossOrigin(origins = "http://localhost:4200/") // Permite que cualquier aplicación externa consuma esta API
 @RestController // Marcar clase como controlador de API que devolverá datos
 // http://localhost:8080/api
 @RequestMapping("/api") // Define la URL base para este recurso.
@@ -42,7 +42,7 @@ public class ProductoController {
     }
 
     // @RequestBody: Toma el JSON que envías desde el cliente y lo convierte automáticamente en un objeto Java.
-    @PostMapping("/producto")
+    @PostMapping("/productos")
     public Producto guardar(@RequestBody Producto nuevo) {
         return this.productoService.guardarProducto(nuevo);
     }
