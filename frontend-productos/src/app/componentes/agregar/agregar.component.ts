@@ -65,6 +65,6 @@ export class AgregarComponent {
   }
 
   cerrarModal() {
-    this.router.navigate(['']);
+    this.router.navigate(['/productos']);
   }
 }

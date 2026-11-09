@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { NavegacionComponent } from './componentes/navegacion/navegacion.component';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,9 @@ import { NavegacionComponent } from './componentes/navegacion/navegacion.compone
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  
+  private authService = inject(AuthService);
+
+  isAutenticado() {
+    return this.authService.isAuthenticated();
+  }
 }

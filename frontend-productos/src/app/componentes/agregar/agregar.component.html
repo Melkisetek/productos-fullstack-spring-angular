@@ -37,10 +37,10 @@
                                 [(ngModel)]="nuevoProducto.precio" />
                         </div>
                         <div class="modal-footer">
-                            <button [routerLink]="['']" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <button [routerLink]="['/productos']" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                 Cerrar
                             </button>
-                            <button type="submit" data-bs-dismiss="modal" class="btn btn-primary" [routerLink]="['']"
+                            <button type="submit" data-bs-dismiss="modal" class="btn btn-primary" [routerLink]="['/productos']"
                                 [disabled]="productoForm.invalid">
                                 Agregar
                             </button>
